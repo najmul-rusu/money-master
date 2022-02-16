@@ -12,11 +12,11 @@ document.getElementById('calculate-button').addEventListener('click', function()
     const clothesField = document.getElementById('clothes-field');
     const getClothesField = clothesField.value;
 
-    //Calculate Expense
+    //Calculate Expense Amount
     const expensesAmount = document.getElementById('expenses-amount');
     expensesAmount.innerText = parseFloat(getFoodField) + parseFloat(getRentField) + parseFloat(getClothesField);
 
-    //Calculate Balance
+    //Calculate Balance Amount
     const remainingBalance = document.getElementById('balance-amount');
     remainingBalance.innerText = getIncome() - expensesAmount.innerText;
 });
