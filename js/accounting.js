@@ -19,13 +19,15 @@ function catchBalance() {
     const getClothesFieldText = clothesField.value;
     const clothingCost = parseFloat(getClothesFieldText);
 
-    //Calculate Total Expense Amount
+    // Error Handler (positive number)
     const errorMsg = document.getElementById('error-msg');
-    if (foodCost < 0 || rentCost < 0 || clothingCost < 0) {
+    if (foodCost < 0 || foodCost == "" ||
+        rentCost < 0 || rentCost == "" ||
+        clothingCost < 0 || clothingCost == "") {
         errorMsg.style.display = 'block';
     } else {
         errorMsg.style.display = 'none';
-
+        //Calculate Total Expense Amount
         totalExpensesAmount = foodCost + rentCost + clothingCost;
         const expensesAmount = document.getElementById('expenses-amount');
         // const expensesAmountText = expensesAmount.innerText;
@@ -38,21 +40,24 @@ function catchBalance() {
         return totalBalance;
     }
 }
+//Click handler for calculate button
 document.getElementById('calculate-btn').addEventListener('click', function() {
-    catchBalance();
-    // Error Handling
-    if (getIncome() > totalExpensesAmount) {} else {
-        alert("Please increase your income")
-        return;
-    }
-})
-
+        catchBalance();
+        // Error Handler (increase income)
+        if (getIncome() > totalExpensesAmount) {} else {
+            alert("Please increase your income")
+            return;
+        }
+    })
+    // click handler for save button
 function saveCalculateBtn() {
     const saveField = document.getElementById('saving-field');
     const savingAmmount = document.getElementById('saving-ammount');
     const remainingBalance = document.getElementById('remaining-balance');
+    // Error Handler (positive number)
     if (
-        saveField.value < 0
+        saveField.value < 0 ||
+        saveField.value == ""
     ) {
         alert("Please enter positive valid number")
         return;
@@ -60,7 +65,7 @@ function saveCalculateBtn() {
     const savePercent = getIncome() * (parseFloat(saveField.value) / 100);
     savingAmmount.innerText = savePercent;
     const totalBalance = getIncome() - totalExpensesAmount;
-
+    // Error Handler (Not enough balance)
     if (totalBalance > savePercent) {
         const totalBalance = getIncome() - totalExpensesAmount;
         remainingBalance.innerText = totalBalance - savePercent;
