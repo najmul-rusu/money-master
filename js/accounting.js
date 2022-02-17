@@ -27,6 +27,7 @@ function catchBalance() {
         errorMsg.style.display = 'block';
     } else {
         errorMsg.style.display = 'none';
+
         //Calculate Total Expense Amount
         totalExpensesAmount = foodCost + rentCost + clothingCost;
         const expensesAmount = document.getElementById('expenses-amount');
@@ -44,9 +45,12 @@ function catchBalance() {
 document.getElementById('calculate-btn').addEventListener('click', function() {
         catchBalance();
         // Error Handler (increase income)
-        if (getIncome() > totalExpensesAmount) {} else {
+        if (getIncome() > totalExpensesAmount) {
+
+
+        } else {
             alert("Please increase your income")
-            return;
+            return totalExpensesAmount;
         }
     })
     // click handler for save button
