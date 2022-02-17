@@ -55,28 +55,31 @@
                             <input type="text" class="form-control" id="clothes-field" placeholder="EX : 2000">
                         </div>
                     </div>
+                    <!--====== Erro Message =======-->
+                    <p id="error-msg" class="text-danger">please enter a valid amount!!!</p>
+
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button id="calculate-button" type="button" class="btn btn-success">Calculate</button>
+                        <button id="calculate-btn" type="button" class="btn btn-success">Calculate</button>
                     </div>
                     <h1 class="fs-5 pt-4">Total Expenses: <span id="expenses-amount">000</span></h1>
-                    <h1 class="fs-5">Balance: <span id="balance-amount">000</span></h1>
+                    <h1 class="fs-5">Balance: <span id="total-balance">000</span></h1>
                     <div class="row mb-3 gap-4 my-4">
                         <div class="d-flex col-4 me-4">
-                            <label id="save-input" class="col-sm-6 col-8 col-form-label">Save: </label>
+                            <label class="col-sm-6 col-8 col-form-label">Save: </label>
                             <div class="col-sm-10 col-6">
-                                <input type="text" class="form-control" id="clothes-input" placeholder="20">
+                                <input id="saving-field" type="text" class="form-control" placeholder="20">
                             </div>
 
                         </div>
                         <div class="d-flex col-4">
-                            <label class="col-sm-6 col-8 col-form-label"> % </label>
+                            <span class="col-sm-6 col-8 col-form-label"> % </span>
                             <div class="col-sm-10 col-6">
-                                <button id="save-button" type="button" class="btn btn-success">save</button>
+                                <button id="save-btn" type="button" class="btn btn-success">save</button>
                             </div>
                         </div>
                     </div>
-                    <h1 class="fs-5 pt-4">Total Expenses: <span id="total-expenses">000</span></h1>
-                    <h1 class="fs-5">Balance: <span id="balance">000</span></h1>
+                    <h1 class="fs-5 pt-4">Saving Amount: <span id="saving-ammount">000</span></h1>
+                    <h1 class="fs-5">Remaining Balance: <span id="remaining-balance">000</span></h1>
                 </div>
         </section>
     </main>
