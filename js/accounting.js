@@ -21,9 +21,9 @@ function catchBalance() {
 
     // Error Handler (positive number)
     const errorMsg = document.getElementById('error-msg');
-    if (foodCost < 0 || foodCost == "" ||
-        rentCost < 0 || rentCost == "" ||
-        clothingCost < 0 || clothingCost == "") {
+    if (foodCost <= 0 || foodCost == "" ||
+        rentCost <= 0 || rentCost == "" ||
+        clothingCost <= 0 || clothingCost == "") {
         errorMsg.style.display = 'block';
     } else {
         errorMsg.style.display = 'none';
@@ -60,7 +60,7 @@ function saveCalculateBtn() {
     const remainingBalance = document.getElementById('remaining-balance');
     // Error Handler (positive number)
     if (
-        saveField.value < 0 ||
+        saveField.value <= 0 ||
         saveField.value == ""
     ) {
         alert("Please enter positive valid number")
