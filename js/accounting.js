@@ -1,8 +1,8 @@
 function getIncome() {
     const incomeField = document.getElementById('income-field');
     let getIncomeFieldText = incomeField.value;
-    let getTotalIncome = parseFloat(getIncomeFieldText);
-    return getTotalIncome;
+    let TotalIncome = parseFloat(getIncomeFieldText);
+    return TotalIncome;
 };
 
 function catchBalance() {
@@ -25,34 +25,48 @@ function catchBalance() {
         errorMsg.style.display = 'block';
     } else {
         errorMsg.style.display = 'none';
+
+        totalExpensesAmount = foodCost + rentCost + clothingCost;
+        const expensesAmount = document.getElementById('expenses-amount');
+        // const expensesAmountText = expensesAmount.innerText;
+        expensesAmount.innerText = totalExpensesAmount;
+
+        //Calculate Balance
+        const Balance = document.getElementById('total-balance');
+        const totalBalance = Balance.innerText;
+        Balance.innerText = getIncome() - totalExpensesAmount;
+        return totalBalance;
     }
-    totalExpensesAmount = foodCost + rentCost + clothingCost;
-    const expensesAmount = document.getElementById('expenses-amount');
-    // const expensesAmountText = expensesAmount.innerText;
-    expensesAmount.innerText = totalExpensesAmount;
-
-    //Calculate Balance
-    const Balance = document.getElementById('total-balance');
-    const totalBalance = Balance.innerText;
-    Balance.innerText = getIncome() - totalExpensesAmount;
-    return totalBalance;
 }
-
 document.getElementById('calculate-btn').addEventListener('click', function() {
     catchBalance();
+    // Error Handling
+    if (getIncome() > totalExpensesAmount) {} else {
+        alert("Please increase your income")
+        return;
+    }
 })
 
-//Add Click Handler to save button
-document.getElementById('save-btn').addEventListener('click', function() {
+function saveCalculateBtn() {
     const saveField = document.getElementById('saving-field');
-    const getSaveFieldText = saveField.value;
-    const savaing = parseFloat(getSaveFieldText)
     const savingAmmount = document.getElementById('saving-ammount');
-    // let savingAmmountText = savingAmmount.innerText;
-    savingAmmount.innerText = (savaing / 100) * getIncome();
-
-    //Calculate Net Remaining Balance
     const remainingBalance = document.getElementById('remaining-balance');
-    remainingBalance.innerText = catchBalance() - savingAmmount.innerText;
-    netRemainingBalance = remainingBalance.innerText;
-});
+    if (
+        saveField.value < 0
+    ) {
+        alert("Please enter positive valid number")
+        return;
+    }
+    const savePercent = getIncome() * (parseFloat(saveField.value) / 100);
+    savingAmmount.innerText = savePercent;
+    const totalBalance = getIncome() - totalExpensesAmount;
+
+    if (totalBalance > savePercent) {
+        const totalBalance = getIncome() - totalExpensesAmount;
+        remainingBalance.innerText = totalBalance - savePercent;
+    } else {
+
+        alert("Not enough balance")
+        return;
+    }
+}
